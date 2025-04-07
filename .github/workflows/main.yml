@@ -1,0 +1,28 @@
+name: Blacklock Code Scanner
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  blacklock-scan:
+    runs-on: ubuntu-latest
+    container:
+      image: blacklocksec/code-scanner:v2  # Use the scanner image
+      options: > 
+        --volume "${{ github.workspace }}:/app"
+        --volume "/bl_reports:/bl_reports"
+    
+      env:
+        SONAR_PROJECTKEY: uG_VHe9F15_YJ6Va
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Run Blacklock Code Scanner
+        run: /usr/local/bin/run.sh
+      
