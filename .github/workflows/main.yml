@@ -15,7 +15,7 @@ jobs:
         --volume "/bl_reports:/bl_reports"
     
       env:
-        SONAR_PROJECTKEY: 5i_gF5kQcUd.K2I_
+        SONAR_PROJECTKEY: Nkk4qeg2-_6cgrb:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     
